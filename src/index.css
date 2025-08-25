@@ -134,14 +134,58 @@ All colors MUST be HSL.
     @apply border-2 border-secondary text-secondary font-semibold px-8 py-4 rounded-lg hover:bg-secondary hover:text-secondary-foreground transform hover:-translate-y-1 transition-all duration-300;
   }
 
-  /* Section Animations */
+  /* Modern Scroll Animations */
   .fade-in-up {
-    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+    @apply opacity-0 translate-y-12 transition-all duration-1000 ease-out;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .fade-in-up.animate {
     @apply opacity-100 translate-y-0;
   }
+
+  .fade-in-left {
+    @apply opacity-0 -translate-x-12 transition-all duration-1000 ease-out;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fade-in-left.animate {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .fade-in-right {
+    @apply opacity-0 translate-x-12 transition-all duration-1000 ease-out;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fade-in-right.animate {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .fade-in {
+    @apply opacity-0 transition-all duration-1000 ease-out;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fade-in.animate {
+    @apply opacity-100;
+  }
+
+  .scale-in {
+    @apply opacity-0 scale-95 transition-all duration-1000 ease-out;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .scale-in.animate {
+    @apply opacity-100 scale-100;
+  }
+
+  /* Staggered Animation Delays */
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
 
   /* Gradient Text */
   .gradient-text {

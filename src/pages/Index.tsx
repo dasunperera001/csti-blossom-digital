@@ -10,23 +10,64 @@ import FooterSection from "@/components/FooterSection";
 
 const Index = () => {
   useEffect(() => {
-    // Intersection Observer for scroll animations
+    // Enhanced Intersection Observer for smooth scroll animations
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
+          // Add staggered animation delay for grouped elements
+          const delay = index * 100;
+          setTimeout(() => {
+            entry.target.classList.add('animate');
+          }, delay);
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
     });
 
-    // Observe all elements with fade-in-up class
-    const animatedElements = document.querySelectorAll('.fade-in-up');
-    animatedElements.forEach((el) => observer.observe(el));
+    // Observe all animated elements with different animation classes
+    const animationClasses = [
+      '.fade-in-up',
+      '.fade-in-left', 
+      '.fade-in-right',
+      '.fade-in',
+      '.scale-in'
+    ];
+    
+    animationClasses.forEach(className => {
+      const elements = document.querySelectorAll(className);
+      elements.forEach((el, index) => {
+        // Add staggered delays to elements in the same section
+        if (index > 0 && el instanceof HTMLElement) {
+          el.style.transitionDelay = `${index * 150}ms`;
+        }
+        observer.observe(el);
+      });
+    });
 
-    return () => observer.disconnect();
+    // Add smooth scroll behavior enhancement
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+    smoothScrollLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href')?.substring(1);
+        const targetElement = targetId ? document.getElementById(targetId) : null;
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    return () => {
+      observer.disconnect();
+      smoothScrollLinks.forEach(link => {
+        link.removeEventListener('click', () => {});
+      });
+    };
   }, []);
 
   return (
