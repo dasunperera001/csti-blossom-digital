@@ -6,12 +6,11 @@ const CTABannerSection = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background Gradient */}
-      {/* <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-light to-secondary"></div> */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary-light"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary-light to-secondary"></div>
       
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-8" style={{
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}></div>
       </div>
@@ -52,7 +51,7 @@ const CTABannerSection = () => {
             viewport={{ once: true }}
           >
             <motion.div whileHover={{ scale: 1.02, y: -2 }} transition={{ duration: 0.2 }}>
-              <Button className="bg-secondary hover:bg-secondary-dark text-secondary-foreground font-semibold px-12 py-6 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg">
+              <Button className="bg-secondary hover:bg-secondary-dark text-secondary-foreground font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg">
                 <Phone className="mr-2 h-5 w-5" />
                 Schedule Free Consultation
               </Button>
@@ -61,7 +60,7 @@ const CTABannerSection = () => {
             <motion.div whileHover={{ scale: 1.02, y: -2 }} transition={{ duration: 0.2 }}>
               <Button 
                 variant="outline" 
-                className="border-2 border-primary-foreground text-primary font-semibold px-12 py-6 rounded-lg hover:bg-primary-foreground hover:text-primary-light transform hover:-translate-y-1 transition-all duration-300 text-lg"
+                className="border-2 border-primary-foreground text-primary-foreground font-semibold px-8 py-4 rounded-lg hover:bg-primary-foreground hover:text-primary transform hover:-translate-y-1 transition-all duration-300 text-lg"
               >
                 <Mail className="mr-2 h-5 w-5" />
                 Request Proposal

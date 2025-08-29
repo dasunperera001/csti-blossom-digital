@@ -188,11 +188,8 @@ All colors MUST be HSL.
   .animate-delay-500 { animation-delay: 500ms; }
 
   /* Gradient Text */
-  /* .gradient-text {
-    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
-  } */
   .gradient-text {
-    @apply bg-gradient-to-r from-secondary to-secondary bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
   }
 
   /* Card Hover Effects */

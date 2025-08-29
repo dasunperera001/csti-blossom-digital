@@ -18,7 +18,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <motion.div 
-        className="relative z-10 max-w-7xl mx-auto pt-24 px-6 lg:px-8 text-center"
+        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -61,12 +61,12 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <Button className="btn-hero py-6 px-12 text-lg">
+          <Button className="btn-hero text-lg">
             Get Started Today
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
           
-          <Button variant="outline" className="btn-hero-outline py-6 px-12 text-lg">
+          <Button variant="outline" className="btn-hero-outline text-lg">
             <Play className="mr-2 h-5 w-5" />
             Watch Our Story
           </Button>
@@ -74,7 +74,7 @@ const HeroSection = () => {
 
         {/* Trust Indicators */}
         <motion.div 
-          className="mt-28 flex flex-wrap justify-between gap-20 text-primary-foreground/80"
+          className="mt-12 flex flex-wrap justify-center gap-8 text-primary-foreground/80"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
@@ -83,7 +83,6 @@ const HeroSection = () => {
           {[
             { value: "500+", label: "Clients Served" },
             { value: "15+", label: "Years Experience" },
-            { value: "6K+", label: "Candidates Enrolled" },
             { value: "98%", label: "Client Satisfaction" }
           ].map((stat, index) => (
             <motion.div 
@@ -94,7 +93,7 @@ const HeroSection = () => {
               transition={{ duration: 0.5, delay: 1.2 + index * 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
             >
-              <div className="text-5xl font-bold text-secondary">{stat.value}</div>
+              <div className="text-3xl font-bold text-secondary">{stat.value}</div>
               <div className="text-sm">{stat.label}</div>
             </motion.div>
           ))}
