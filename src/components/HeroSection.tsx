@@ -1,18 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-consultancy.jpg";
+// import heroImage from "@/assets/hero-consultancy.jpg";
+import heroVideo from "@/assets/hero-bg-video.mp4";
+
 
 const HeroSection = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
+        {/* <img 
           src={heroImage} 
           alt="CSTI Bureau Professional Consultancy" 
           className="w-full h-full object-cover"
-        />
+        /> */}
+        <video src={heroVideo} autoPlay loop muted className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/40"></div>
       </div>
 
@@ -81,9 +84,9 @@ const HeroSection = () => {
           viewport={{ once: true }}
         >
           {[
+            { value: "6K+", label: "Candidate Placements" },
             { value: "500+", label: "Clients Served" },
             { value: "15+", label: "Years Experience" },
-            { value: "6K+", label: "Candidates Enrolled" },
             { value: "98%", label: "Client Satisfaction" }
           ].map((stat, index) => (
             <motion.div 
