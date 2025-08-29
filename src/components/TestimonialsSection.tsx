@@ -47,11 +47,14 @@ const TestimonialsSection = () => {
     }
   ];
 
-  // Auto-rotate testimonials
+  // Auto-rotate testimonials (2 at a time)
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+      setCurrentTestimonial((prev) => {
+        const next = prev + 2;
+        return next >= testimonials.length ? 0 : next;
+      });
+    }, 6000);
     return () => clearInterval(timer);
   }, []);
 
@@ -68,59 +71,108 @@ const TestimonialsSection = () => {
           </p>
         </div>
 
-        {/* Featured Testimonial */}
+        {/* Featured Testimonials */}
         <div className="relative mb-16">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-card rounded-2xl p-8 md:p-12 shadow-elegant relative overflow-hidden">
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6 opacity-10">
-                <Quote className="h-16 w-16 text-primary" />
-              </div>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* First Testimonial */}
+              {testimonials[currentTestimonial] && (
+                <div className="bg-card rounded-2xl p-6 md:p-8 shadow-elegant relative overflow-hidden">
+                  {/* Quote Icon */}
+                  <div className="absolute top-4 right-4 opacity-10">
+                    <Quote className="h-12 w-12 text-primary" />
+                  </div>
 
-              <div className="relative z-10">
-                {/* Rating */}
-                <div className="flex items-center justify-center mb-6">
-                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-secondary fill-current" />
-                  ))}
-                </div>
-
-                {/* Testimonial Text */}
-                <blockquote className="text-xl md:text-2xl text-foreground text-center mb-8 leading-relaxed font-medium">
-                  "{testimonials[currentTestimonial].text}"
-                </blockquote>
-
-                {/* Client Info */}
-                <div className="flex items-center justify-center space-x-4">
-                  <img 
-                    src={testimonials[currentTestimonial].image} 
-                    alt={testimonials[currentTestimonial].name}
-                    className="w-16 h-16 rounded-full object-cover border-2 border-secondary/20"
-                  />
-                  <div className="text-center">
-                    <div className="font-bold text-foreground text-lg">
-                      {testimonials[currentTestimonial].name}
+                  <div className="relative z-10">
+                    {/* Rating */}
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 text-secondary fill-current" />
+                      ))}
                     </div>
-                    <div className="text-secondary font-medium">
-                      {testimonials[currentTestimonial].position}
-                    </div>
-                    <div className="text-muted-foreground text-sm">
-                      {testimonials[currentTestimonial].company}
+
+                    {/* Testimonial Text */}
+                    <blockquote className="text-lg text-foreground mb-6 leading-relaxed">
+                      "{testimonials[currentTestimonial].text}"
+                    </blockquote>
+
+                    {/* Client Info */}
+                    <div className="flex items-center space-x-3">
+                      <img 
+                        src={testimonials[currentTestimonial].image} 
+                        alt={testimonials[currentTestimonial].name}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-secondary/20"
+                      />
+                      <div>
+                        <div className="font-bold text-foreground">
+                          {testimonials[currentTestimonial].name}
+                        </div>
+                        <div className="text-secondary font-medium text-sm">
+                          {testimonials[currentTestimonial].position}
+                        </div>
+                        <div className="text-muted-foreground text-xs">
+                          {testimonials[currentTestimonial].company}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
+
+              {/* Second Testimonial */}
+              {testimonials[currentTestimonial + 1] && (
+                <div className="bg-card rounded-2xl p-6 md:p-8 shadow-elegant relative overflow-hidden">
+                  {/* Quote Icon */}
+                  <div className="absolute top-4 right-4 opacity-10">
+                    <Quote className="h-12 w-12 text-primary" />
+                  </div>
+
+                  <div className="relative z-10">
+                    {/* Rating */}
+                    <div className="flex items-center mb-4">
+                      {[...Array(testimonials[currentTestimonial + 1].rating)].map((_, i) => (
+                        <Star key={i} className="h-4 w-4 text-secondary fill-current" />
+                      ))}
+                    </div>
+
+                    {/* Testimonial Text */}
+                    <blockquote className="text-lg text-foreground mb-6 leading-relaxed">
+                      "{testimonials[currentTestimonial + 1].text}"
+                    </blockquote>
+
+                    {/* Client Info */}
+                    <div className="flex items-center space-x-3">
+                      <img 
+                        src={testimonials[currentTestimonial + 1].image} 
+                        alt={testimonials[currentTestimonial + 1].name}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-secondary/20"
+                      />
+                      <div>
+                        <div className="font-bold text-foreground">
+                          {testimonials[currentTestimonial + 1].name}
+                        </div>
+                        <div className="text-secondary font-medium text-sm">
+                          {testimonials[currentTestimonial + 1].position}
+                        </div>
+                        <div className="text-muted-foreground text-xs">
+                          {testimonials[currentTestimonial + 1].company}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Navigation Dots */}
           <div className="flex items-center justify-center space-x-2 mt-8">
-            {testimonials.map((_, index) => (
+            {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentTestimonial(index)}
+                onClick={() => setCurrentTestimonial(index * 2)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentTestimonial 
+                  Math.floor(currentTestimonial / 2) === index
                     ? 'bg-secondary scale-125' 
                     : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                 }`}
