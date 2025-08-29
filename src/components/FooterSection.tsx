@@ -152,9 +152,10 @@ const FooterSection = () => {
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-primary-foreground/20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
-          <div className="md:flex md:items-center md:justify-between">
+      <div className="border-primary-foreground/20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-0">
+          <div className="pt-8 pb-8 border-t border-primary-foreground/10">
+            <div className="md:flex md:items-center md:justify-between">
             <div className="text-sm text-primary-foreground/60">
               <p>&copy; {currentYear} CSTI Bureau. All rights reserved.</p>
             </div>
@@ -176,9 +177,10 @@ const FooterSection = () => {
               </div>
             </div>
           </div>
+          </div>
 
           {/* Certifications */}
-          <div className="mt-6 pt-6 border-t border-primary-foreground/10">
+          {/* <div className="mt-6 pt-6 border-t border-primary-foreground/10">
             <div className="flex flex-wrap justify-center gap-6 text-xs text-primary-foreground/60">
               <span>ISO 9001:2015 Certified</span>
               <span>•</span>
@@ -188,7 +190,7 @@ const FooterSection = () => {
               <span>•</span>
               <span>Licensed by Ministry of Education</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

@@ -112,12 +112,14 @@ const FeaturedProgramsSection = () => {
                     {program.level}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-                  {program.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {program.description}
-                </p>
+                <div className="min-h-[150px]">
+                  <h3 className="min-h-[50px] text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                    {program.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {program.description}
+                  </p>
+                </div>
               </motion.div>
 
               {/* Program Details */}
@@ -180,7 +182,7 @@ const FeaturedProgramsSection = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 + 1.0, ease: "easeOut" }}
                 viewport={{ once: true }}
               >
-                <div className="flex items-center justify-between mb-4">
+                {/* <div className="flex items-center justify-between mb-4">
                   <div>
                     <span className="text-xs text-muted-foreground">Starting from</span>
                     <div className="text-xl font-bold text-foreground">{program.price}</div>
@@ -189,7 +191,7 @@ const FeaturedProgramsSection = () => {
                     <Award className="h-4 w-4 text-secondary" />
                     <span className="text-xs text-muted-foreground">Certificate</span>
                   </div>
-                </div>
+                </div> */}
                 
                 <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                   Enroll Now
