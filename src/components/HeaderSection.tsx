@@ -7,7 +7,7 @@ const HeaderSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Recruiters", href: "#recruiters" },
+    { name: "Employers", href: "#employers" },
     { name: "Candidates", href: "#candidates" },
     { name: "About", href: "#about" },
     { name: "Certifications", href: "#certifications" },
