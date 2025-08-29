@@ -16,7 +16,8 @@ const HeaderSection = () => {
 
   return (
     <motion.header 
-      className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
+      // className="fixed top-0 left-0 right-0 z-50 bg-background/5 backdrop-blur-xl border-b border-background/5 shadow-sm"
+      className="fixed top-0 left-0 right-0 z-50 bg-primary/20 backdrop-blur-xl border-b border-background/5 shadow-sm"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -34,7 +35,7 @@ const HeaderSection = () => {
               <span className="text-primary-foreground font-bold text-lg">C</span>
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">CSTI Bureau</h1>
+              <h1 className="text-xl font-bold text-background">CSTI Bureau</h1>
               <p className="text-xs text-muted-foreground">Professional Consultancy</p>
             </div>
           </motion.div>
@@ -50,7 +51,7 @@ const HeaderSection = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-primary font-medium transition-colors duration-300 relative group"
+                className="text-background hover:text-primary font-medium transition-colors duration-300 relative group"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
@@ -68,17 +69,17 @@ const HeaderSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              Login
-            </Button>
-            <Button size="sm" className="bg-gradient-primary text-primary-foreground hover:shadow-lg transition-all duration-300">
+            <Button variant="outline" size="md" className="text-primary hover:bg-primary hover:border-primary hover:text-primary-foreground">
               Get Started
             </Button>
+            {/* <Button size="sm" className="bg-gradient-primary text-primary-foreground hover:shadow-lg transition-all duration-300">
+              Get Started
+            </Button> */}
           </motion.div>
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg text-background hover:bg-muted transition-colors duration-200"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -105,7 +106,7 @@ const HeaderSection = () => {
                 <motion.a
                   key={item.name}
                   href={item.href}
-                  className="block text-foreground hover:text-primary font-medium py-2 transition-colors duration-300"
+                  className="block text-background hover:text-primary font-medium py-2 transition-colors duration-300"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -121,7 +122,7 @@ const HeaderSection = () => {
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
                 <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                  Login
+                  Get Started
                 </Button>
                 <Button size="sm" className="bg-gradient-primary text-primary-foreground">
                   Get Started
