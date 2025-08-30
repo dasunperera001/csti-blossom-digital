@@ -17,7 +17,7 @@ const TestimonialsSection = () => {
       name: "Priya Wickramasinghe",
       position: "HR Director, Ceylon Bank",
       company: "Banking & Finance",
-      image: "https://images.unsplash.com/photo-1494790108755-2616c0763c1e?w=150&h=150&fit=crop&crop=face",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
       rating: 5,
       text: "The leadership development program exceeded our expectations. Our management team's performance improved significantly, and the practical approach to training made the learning experience engaging and effective. Highly recommended!"
     },
@@ -42,6 +42,14 @@ const TestimonialsSection = () => {
       position: "Founder, Green Energy Solutions",
       company: "Renewable Energy",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face",
+      rating: 5,
+      text: "As a startup, we needed strategic guidance to scale effectively. CSTI Bureau's business consulting services provided us with a clear roadmap for growth. We've tripled our revenue since implementing their recommendations."
+    },
+    {
+      name: "Sadun Silva",
+      position: "Founder, Green Tech Solutions",
+      company: "Software Solutions",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       rating: 5,
       text: "As a startup, we needed strategic guidance to scale effectively. CSTI Bureau's business consulting services provided us with a clear roadmap for growth. We've tripled our revenue since implementing their recommendations."
     }
