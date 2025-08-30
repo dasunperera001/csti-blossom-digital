@@ -7,7 +7,7 @@ const HeaderSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [coursesDropdownOpen, setCoursesDropdownOpen] = useState(false);
   const [destinationsDropdownOpen, setDestinationsDropdownOpen] = useState(false);
-  const [isShrunk, setIsShrunk] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [activeMobileAccordion, setActiveMobileAccordion] = useState<string | null>(null);
   
   const coursesRef = useRef<HTMLDivElement>(null);
@@ -15,11 +15,11 @@ const HeaderSection = () => {
 
   const navItems = [
     { name: "Home", href: "/" },
+    { name: "For Employers", href: "/employers" },
     { name: "Courses", hasDropdown: true },
     { name: "Destinations", hasDropdown: true },
-    { name: "For Employers", href: "/employers" },
-    { name: "Accreditation", href: "/accreditation" },
-    { name: "Candidate Success", href: "/success" },
+    // { name: "Accreditation", href: "/accreditation" },
+    // { name: "Candidate Success", href: "/success" },
     { name: "News", href: "/news" },
     { name: "Contact", href: "/contact" },
   ];
@@ -39,7 +39,7 @@ const HeaderSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsShrunk(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 50);
     };
 
     const handleClickOutside = (event: MouseEvent) => {
@@ -71,10 +71,10 @@ const HeaderSection = () => {
   }, []);
 
   return (
-    <header role="banner">
-      {/* Topbar */}
+    <>
+      {/* Topbar - Static, not sticky */}
       <motion.div 
-        className="bg-primary/10 backdrop-blur-sm border-b border-primary/20 text-sm"
+        className="bg-gray-100 backdrop-blur-sm border-b border-gray-100 text-sm"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
@@ -114,15 +114,22 @@ const HeaderSection = () => {
         </div>
       </motion.div>
 
-      {/* Main Header */}
-      <motion.div 
-        className={`fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-xl border-b border-border shadow-sm transition-all duration-300 ${isShrunk ? 'pt-0' : 'pt-12'}`}
+      {/* Main Header - Sticky */}
+      <motion.header 
+        role="banner" 
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-lg' 
+            : 'bg-background/95 backdrop-blur-xl border-b border-border shadow-sm'
+        }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className={`flex items-center justify-between transition-all duration-300 ${isShrunk ? 'h-14' : 'h-16 md:h-20'}`}>
+          <div className={`flex items-center justify-between transition-all duration-300 ${
+            isScrolled ? 'h-16' : 'h-20'
+          }`}>
             
             {/* Logo */}
             <motion.a
@@ -133,12 +140,20 @@ const HeaderSection = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               aria-label="CSTI Bureau - Home"
             >
-              <div className={`bg-gradient-primary rounded-lg flex items-center justify-center transition-all duration-300 ${isShrunk ? 'w-8 h-8' : 'w-10 h-10'}`}>
-                <span className={`text-primary-foreground font-bold transition-all duration-300 ${isShrunk ? 'text-base' : 'text-lg'}`}>C</span>
+              <div className={`bg-primary rounded-lg flex items-center justify-center transition-all duration-300 ${
+                isScrolled ? 'w-10 h-10' : 'w-12 h-12'
+              }`}>
+                <span className={`text-primary-foreground font-bold transition-all duration-300 ${
+                  isScrolled ? 'text-lg' : 'text-xl'
+                }`}>C</span>
               </div>
               <div>
-                <h1 className={`font-bold text-foreground transition-all duration-300 ${isShrunk ? 'text-lg' : 'text-xl'}`}>CSTI Bureau</h1>
-                <p className={`text-muted-foreground transition-all duration-300 ${isShrunk ? 'text-xs' : 'text-sm'}`}>Training & Placement Academy</p>
+                <h1 className={`font-bold text-foreground transition-all duration-300 ${
+                  isScrolled ? 'text-xl' : 'text-2xl'
+                }`}>CSTI Bureau</h1>
+                <p className={`text-muted-foreground transition-all duration-300 ${
+                  isScrolled ? 'text-sm' : 'text-base'
+                }`}>Training & Placement Academy</p>
               </div>
             </motion.a>
 
@@ -237,14 +252,7 @@ const HeaderSection = () => {
 
             {/* Right Side CTAs */}
             <div className="flex items-center space-x-4">
-              <a href="tel:+94112345678" className="hidden md:flex items-center text-foreground hover:text-primary transition-colors" aria-label="Call hotline">
-                <Phone size={18} />
-              </a>
-              
               <div className="hidden lg:flex items-center space-x-3">
-                <Button variant="outline" size="sm" asChild>
-                  <a href="/candidate-portal">Candidate Portal</a>
-                </Button>
                 <Button size="sm" asChild>
                   <a href="/request-quota">Request Job Quota</a>
                 </Button>
@@ -262,7 +270,7 @@ const HeaderSection = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.header>
 
       {/* Mobile Navigation */}
       <AnimatePresence>
@@ -288,9 +296,6 @@ const HeaderSection = () => {
                 <div className="space-y-3 pb-6 border-b border-border">
                   <Button size="sm" className="w-full" asChild>
                     <a href="/request-quota">Request Job Quota</a>
-                  </Button>
-                  <Button variant="outline" size="sm" className="w-full" asChild>
-                    <a href="/candidate-portal">Candidate Portal</a>
                   </Button>
                 </div>
 
@@ -360,24 +365,12 @@ const HeaderSection = () => {
                     </div>
                   ))}
                 </nav>
-
-                {/* Mobile phone call button */}
-                <div className="pt-6 border-t border-border">
-                  <a
-                    href="tel:+94112345678"
-                    className="flex items-center justify-center space-x-2 w-full py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-                    aria-label="Call now"
-                  >
-                    <Phone size={18} />
-                    <span>Call Now</span>
-                  </a>
-                </div>
               </div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
 
